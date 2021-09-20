@@ -19,4 +19,7 @@ RUN rm -rf /var/www/html/install
 # config via environment variables
 COPY connect.php /var/www/html/control/
 
+# Add a migration script
+COPY migrate.sh /
+
 EXPOSE 80
