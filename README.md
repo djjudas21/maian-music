@@ -1,16 +1,8 @@
 # Dockerfile for Maian Music
 
-* Download the free version of Maian Music from https://www.maianmusic.com
-* Unzip the archive
-* Copy this `Dockerfile` into the `maian_music` directory, at the same level as `music-store`
+Maian Music is a PHP application for selling digital and physical music.
 
-You will need to supply:
-* license file
-* MySQL credentials
-
-## Images
-
-### App
+## Running
 
 You will need to provide the following environment variables
 
@@ -18,3 +10,14 @@ You will need to provide the following environment variables
 `MM_DB_USER`
 `MM_DB_PASS`
 `MM_DB_NAME`
+
+## Building
+
+1. Download the free version of Maian Music from https://www.maianmusic.com
+1. Move the `maian_music.zip` archive into this directory
+1. Unzip the archive
+1. Run `docker build .`
+
+You will need to supply:
+* license file
+* MySQL credentials
