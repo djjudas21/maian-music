@@ -20,6 +20,6 @@ RUN rm -rf /var/www/html/install
 COPY connect.php /var/www/html/control/
 
 # Add a migration script
-COPY migrate.sh /
+COPY initdb.sh /
 
 EXPOSE 80
