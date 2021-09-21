@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.3-fpm
 
 # Install OS deps
 RUN apt-get update \
@@ -12,17 +12,15 @@ RUN docker-php-ext-configure mysqli \
     && docker-php-ext-install zip
 
 # Copy in Maian Music app
-COPY maian_music/music-store/ /var/www/html/
+RUN mkdir /app
+WORKDIR /app
+COPY maian_music/music-store/ /app/
 
 # Get rid of install dir
-RUN rm -rf /var/www/html/install
-
-# Activate .htaccess
-RUN a2enmod rewrite \
-    && mv /var/www/html/htaccess_COPY.txt /var/www/html/.htaccess
+RUN rm -rf /app/install
 
 # Patch connect.php to allow setting database
 # config via environment variables
-COPY connect.php /var/www/html/control/
+COPY connect.php /app/control/
 
-EXPOSE 80
+EXPOSE 9000
