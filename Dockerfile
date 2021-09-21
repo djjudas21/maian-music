@@ -1,10 +1,5 @@
 FROM php:7.3-apache
 
-# Install MySQL client for migrations
-RUN apt-get update \
-	&& apt-get install -y default-mysql-client \
-	&& rm -rf /var/lib/apt/lists/*
-
 # Install MySQL connector for PHP
 RUN docker-php-ext-configure mysqli \
     && docker-php-ext-install mysqli
@@ -18,8 +13,5 @@ RUN rm -rf /var/www/html/install
 # Patch connect.php to allow setting database
 # config via environment variables
 COPY connect.php /var/www/html/control/
-
-# Add a migration script
-COPY initdb.sh /
 
 EXPOSE 80
