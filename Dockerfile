@@ -19,8 +19,9 @@ COPY maian_music/music-store/ /app/
 # Get rid of install dir
 RUN rm -rf /app/install
 
-# Patch connect.php to allow setting database
+# Patch config files to allow setting
 # config via environment variables
 COPY connect.php /app/control/
+COPY access.php /app/admin/control/
 
 EXPOSE 9000
