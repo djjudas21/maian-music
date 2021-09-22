@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.3-apache
 
 # Install OS deps
 RUN apt-get update \
