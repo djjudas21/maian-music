@@ -12,16 +12,15 @@ RUN docker-php-ext-configure mysqli \
     && docker-php-ext-install zip
 
 # Copy in Maian Music app
-RUN mkdir /app
-WORKDIR /app
-COPY maian_music/music-store/ /app/
+WORKDIR /var/www/html
+COPY maian_music/music-store/ .
 
 # Get rid of install dir
-RUN rm -rf /app/install
+RUN rm -rf install
 
 # Patch config files to allow setting
 # config via environment variables
-COPY connect.php /app/control/
-COPY access.php /app/admin/control/
+COPY connect.php control/
+COPY access.php admin/control/
 
 EXPOSE 9000
